@@ -104,7 +104,7 @@ app.get("/Products", function(req, res) {
   client.query(sql, (err, result) => {
     if (err) console.log(err);
     console.log(result);
-    res.send(result);
+    res.json(result);
   });
   // client.end();
   // mysqlConnection.end();
@@ -115,7 +115,7 @@ app.get("/Type", function(req, res) {
   client.query(sql, (err, result) => {
     if (err) console.log(err);
     console.log(result);
-    res.send(result);
+    res.json(result);
   });
   // client.end();
   // mysqlConnection.end();
@@ -125,7 +125,7 @@ app.get("/SubCat/:id", (req, res) => {
   client.query(
     "SELECT * FROM subcategory WHERE cat_id =" + req.params.id + ";",
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -137,7 +137,7 @@ app.get("/SububCat/:id", (req, res) => {
   client.query(
     "SELECT * FROM sububcategory WHERE sub_category_id =" + req.params.id + ";",
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -149,7 +149,7 @@ app.get("/Sububproduct/:id", (req, res) => {
   client.query(
     "SELECT * FROM products WHERE subub_category_id =" + req.params.id + ";",
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -161,7 +161,7 @@ app.get("/allSububproduct/:id", (req, res) => {
   client.query(
     "SELECT * FROM products WHERE subub_category_id =" + req.params.id + ";",
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -173,7 +173,7 @@ app.get("/subSubCat/:id", (req, res) => {
   client.query(
     "SELECT * FROM sububcategory WHERE sub_category_id =" + req.params.id + ";",
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -187,7 +187,7 @@ app.get("/SubCatpro/:id", (req, res) => {
       req.params.id +
       " ORDER BY id DESC;",
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -201,7 +201,7 @@ app.get("/Sububpro/:id", (req, res) => {
       req.params.id +
       " ORDER BY id DESC;",
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -214,7 +214,7 @@ app.post("/Products/", function(req, res) {
   client.query(sql, (err, result) => {
     if (err) console.log(err);
     console.log(result);
-    res.send(result);
+    res.json(result);
   });
   // client.end();
   // mysqlConnection.end();
@@ -224,7 +224,7 @@ app.get("/product/:name", (req, res) => {
   client.query(
     "SELECT * FROM products WHERE name LIKE '%" + [req.params.name] + "%';",
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -236,7 +236,7 @@ app.get("/pro/:id", (req, res) => {
   client.query(
     "Delete FROM products WHERE id =" + req.params.id + ";",
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -250,7 +250,7 @@ app.get("/product_id/:id", (req, res) => {
   client.query(
     "Select * FROM products WHERE id =" + req.params.id + ";",
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -262,7 +262,7 @@ app.get("/pay/:email", (req, res) => {
   client.query(
     "SELECT * FROM custormers WHERE email ='" + req.params.email + "';",
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -274,7 +274,7 @@ app.get("/cat/:id", (req, res) => {
   client.query(
     "Delete FROM category WHERE id =" + req.params.id + ";",
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -286,7 +286,7 @@ app.get("/subcat/del/:id", (req, res) => {
   client.query(
     "Delete FROM subcategory WHERE id =" + req.params.id + ";",
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -307,7 +307,7 @@ app.get("/sububcat/del/:id", (req, res) => {
 
 app.get("/custom", (req, res) => {
   client.query("SELECT * FROM custormers;", (err, rows, fields) => {
-    if (!err) res.send(rows);
+    if (!err) res.json(rows);
     else console.log(err);
   });
   // mysqlConnection.end();
@@ -317,7 +317,7 @@ app.get("/custom", (req, res) => {
 //    client.query(
 //     "SELECT COUNT(*) FROM custormers",
 //     (err, rows, fields) => {
-//       if (!err) res.send(rows);
+//       if (!err) res.json(rows);
 //       else console.log(err);
 //     }
 //   );
@@ -365,7 +365,7 @@ app.get("/catepro/:category", (req, res) => {
     "SELECT * FROM products WHERE category = ?;",
     [req.params.category],
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -378,7 +378,7 @@ app.get("/subcategory", function(req, res) {
   client.query(sql, (err, result) => {
     if (err) console.log(err);
     console.log(result);
-    res.send(result);
+    res.json(result);
   });
   // client.end();
   // mysqlConnection.end();
@@ -389,7 +389,7 @@ app.get("/subsubcategory", function(req, res) {
   client.query(sql, (err, result) => {
     if (err) console.log(err);
     console.log(result);
-    res.send(result);
+    res.json(result);
   });
   // client.end();
   // mysqlConnection.end();
@@ -400,7 +400,7 @@ app.post("/category", function(req, res) {
   client.query(sql, (err, result) => {
     if (err) console.log(err);
     console.log(result);
-    res.send(result);
+    res.json(result);
   });
   // client.end();
   // mysqlConnection.end();
@@ -411,7 +411,7 @@ app.get("/category", function(req, res) {
   client.query(sql, (err, result) => {
     if (err) console.log(err);
     console.log(result);
-    res.send(result);
+    res.json(result);
   });
   // client.end();
   // mysqlConnection.end();
@@ -422,7 +422,7 @@ app.get("/cat-admin-list/:id", (req, res) => {
     "SELECT * FROM category WHERE id = ?;",
     [req.params.id],
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -435,7 +435,7 @@ app.get("/subsub-admin-list/:id", (req, res) => {
     "SELECT * FROM sububcategory WHERE id = ?;",
     [req.params.id],
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -448,7 +448,7 @@ app.get("/subub-admin-list/:id", (req, res) => {
     "SELECT * FROM subcategory WHERE id = ?;",
     [req.params.id],
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
@@ -461,7 +461,7 @@ app.get("/product/:id", (req, res) => {
     "SELECT * FROM products WHERE id = ?;",
     [req.params.id],
     (err, rows, fields) => {
-      if (!err) res.send(rows);
+      if (!err) res.json(rows);
       else console.log(err);
     }
   );
