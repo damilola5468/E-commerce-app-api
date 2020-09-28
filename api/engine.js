@@ -24,12 +24,12 @@ const client = new Client({
 client.connect();
 
 // Serve any static files
-app.use(express.static(path.join(__dirname, "../build/")));
+// app.use(express.static(path.join(__dirname, "../build/")));
 
 // Handle React routing, return all requests to React app
-app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "../build/", "index.html"));
-});
+// app.get("*", function(req, res) {
+//   res.sendFile(path.join(__dirname, "../build/", "index.html"));
+// });
 
 // app.use(express.static("public"));
 // app.get("*", (req, res) => {
@@ -43,8 +43,8 @@ app.get("*", function(req, res) {
 //   }
 // });
 
-app.get("/hello", (req, res) => {
-  res.json("Hello World");
+app.get("/", (req, res) => {
+  res.render("<h1>Hello World</h1>");
 });
 
 app.post("/c/products", (req, res) => {
