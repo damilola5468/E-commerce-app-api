@@ -39,7 +39,7 @@
   "scripts": {
     "client": "yarn build",
     "server": "npx nodemon engine.js",
-    "dev": "concurrently \"npm run api\"  \" yarn build\" ",
+    "dev": "concurrently \"npm run api\" ",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
