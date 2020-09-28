@@ -37,13 +37,7 @@
     "yarn": "^1.22.4"
   },
   "scripts": {
-    "client": "yarn build",
-    "server": "npx nodemon engine.js",
     "dev": "concurrently \"npm run api\" ",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "api": "nodemon api/engine.js"
   },
   "eslintConfig": {
