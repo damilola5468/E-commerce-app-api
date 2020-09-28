@@ -44,7 +44,7 @@ app.get("*", function(req, res) {
 // });
 
 app.get("/hello", (req, res) => {
-  res.send("Hello World");
+  res.json("Hello World");
 });
 
 app.post("/c/products", (req, res) => {
